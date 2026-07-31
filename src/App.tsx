@@ -10,6 +10,7 @@ import { ContactSection } from './sections/ContactSection'
 import { DroneShell } from './pages/drone/DroneShell'
 import { DroneHub } from './pages/drone/DroneHub'
 import { DroneServicePage } from './pages/drone/DroneServicePage'
+import { PricingApp } from './pricing/PricingApp'
 
 const ModelsSection = lazy(() =>
   import('./sections/ModelsSection').then((m) => ({ default: m.ModelsSection })),
@@ -95,7 +96,7 @@ function ScrollPortfolio() {
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
-    if (pathname.startsWith('/drone')) {
+    if (pathname.startsWith('/drone') || pathname.startsWith('/pricing')) {
       window.scrollTo(0, 0)
     }
   }, [pathname])
@@ -115,6 +116,7 @@ export default function App() {
           <Route index element={<DroneHub />} />
           <Route path=":slug" element={<DroneServicePage />} />
         </Route>
+        <Route path="/pricing" element={<PricingApp />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
