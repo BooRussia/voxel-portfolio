@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 import {
   type Complexity,
   type GlobalPricingSettings,
@@ -191,9 +190,7 @@ export function PricingApp() {
 
         <div className="pq-map-chrome">
           <div className="pq-map-chrome__top">
-            <Link to="/" className="pq-brand-chip">
-              Voxel · Pricing
-            </Link>
+            <span className="pq-brand-chip">Aerial Pricing</span>
             <AddressSearch onSelect={onSelectSite} className="pq-map-search" />
           </div>
 

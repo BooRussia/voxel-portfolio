@@ -17,8 +17,8 @@ export function DroneHub() {
           <a href="#platforms" className="dx-btn dx-btn--solid">
             View platforms
           </a>
-          <Link to="/pricing" className="dx-btn dx-btn--ghost">
-            Open pricing map
+          <Link to="/#contact" className="dx-btn dx-btn--ghost">
+            Request a quote
           </Link>
         </div>
       </section>
