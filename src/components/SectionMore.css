@@ -1,0 +1,89 @@
+.section-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: var(--tap);
+  padding: 0.7rem 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition:
+    transform var(--dur) var(--ease),
+    background var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.section-more:active {
+  transform: scale(0.98);
+}
+
+.section-more__arrow {
+  transition: transform var(--dur) var(--ease);
+}
+
+.section-more:hover .section-more__arrow {
+  transform: translateX(4px);
+}
+
+/* Web section — gold pill matching luxury / brand */
+.section-more--gold {
+  background: var(--accent);
+  color: #0a0a0a;
+  box-shadow: 0 8px 28px rgba(201, 162, 39, 0.28);
+}
+
+.section-more--gold:hover {
+  background: #dbb84a;
+}
+
+/* Logos — brushed metal chrome */
+.section-more--chrome {
+  background: linear-gradient(135deg, #e8e8e8 0%, #9a9a9a 45%, #f5f5f5 100%);
+  color: #111;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.section-more--chrome:hover {
+  filter: brightness(1.08);
+}
+
+/* 360 tour — glass chip parked out of drag zone */
+.section-more--glass {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.section-more--glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.section-more--outline {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  background: transparent;
+}
+
+.section-more--outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.section-more--light {
+  background: #fff;
+  color: #0a0a0a;
+}
+
+.section-more--light:hover {
+  background: #f0f0f0;
+}

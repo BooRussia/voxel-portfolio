@@ -1,0 +1,120 @@
+/* Voxel Design — design tokens
+   Dark-first studio system. Hierarchy via type + space; gold is the single accent. */
+
+:root {
+  color-scheme: dark;
+
+  /* Spacing — 8pt grid */
+  --space-0_5: 0.125rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Type — major third-ish + fluid display */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-display: clamp(2.25rem, 1.4rem + 3.5vw, 4rem);
+  --text-display-sm: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.55;
+  --measure: 62ch;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --font-sans: 'Instrument Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Touch */
+  --tap-min: 44px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-pill: 9999px;
+
+  /* Warm-dark neutrals (toward gold) */
+  --ink-950: #070706;
+  --ink-900: #0c0c0b;
+  --ink-850: #121211;
+  --ink-800: #1a1a18;
+  --ink-700: #262622;
+  --ink-600: #3a3a34;
+  --ink-500: #5c5c54;
+  --ink-400: #8a8a80;
+  --ink-300: #b0b0a6;
+  --ink-200: #d4d4cc;
+  --ink-100: #ecece6;
+  --ink-50: #f7f7f3;
+
+  /* Gold accent family */
+  --gold-500: #c9a227;
+  --gold-400: #dbb84a;
+  --gold-300: #e8cd72;
+  --gold-600: #a6841c;
+  --gold-glow: hsl(43 70% 48% / 0.35);
+
+  /* Semantic surfaces */
+  --color-bg: var(--ink-900);
+  --color-bg-elevated: var(--ink-850);
+  --color-surface: var(--ink-800);
+  --color-surface-hover: var(--ink-700);
+  --color-border: hsl(45 8% 100% / 0.08);
+  --color-border-strong: hsl(45 8% 100% / 0.14);
+  --color-text: var(--ink-100);
+  --color-text-secondary: var(--ink-300);
+  --color-text-tertiary: var(--ink-400);
+  --color-accent: var(--gold-500);
+  --color-accent-hover: var(--gold-400);
+  --color-accent-muted: hsl(43 70% 48% / 0.14);
+  --color-focus: var(--gold-400);
+  --color-scrim: hsl(0 0% 0% / 0.55);
+
+  /* Shadows — gold-tinted, soft */
+  --shadow-1: 0 1px 2px hsl(40 30% 4% / 0.4), 0 4px 12px hsl(40 30% 4% / 0.35);
+  --shadow-2: 0 4px 8px hsl(40 30% 4% / 0.4), 0 16px 40px hsl(40 30% 4% / 0.45);
+  --shadow-glow: 0 0 0 1px hsl(43 70% 48% / 0.2), 0 0 40px hsl(43 70% 48% / 0.12);
+
+  /* Layout */
+  --nav-h: 4rem;
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
+  --content-max: 72rem;
+  --content-narrow: 40rem;
+
+  /* Motion */
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 360ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}

@@ -1,0 +1,99 @@
+.logos-section {
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 100%, rgba(80, 80, 90, 0.12), transparent 55%),
+    #080808;
+  padding: calc(var(--nav-safe) + 3.5rem) var(--pad) 1.25rem;
+  gap: 1rem;
+}
+
+.logos-section__header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 36rem;
+}
+
+.logos-section__header .section-title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: #fff;
+}
+
+.logos-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+@media (min-width: 48em) {
+  .logos-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+.logo-cell {
+  position: relative;
+  margin: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
+  overflow: hidden;
+  min-height: 11rem;
+  display: flex;
+  flex-direction: column;
+  touch-action: none; /* own the drag for orbit */
+}
+
+.logo-cell__canvas {
+  flex: 1;
+  width: 100%;
+  min-height: 12rem;
+  display: block;
+  cursor: grab;
+}
+
+.logo-cell__canvas:active {
+  cursor: grabbing;
+}
+
+.logo-cell__name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+  padding: 0.65rem 0.5rem 0.85rem;
+  color: var(--text-dim);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.logos-section__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.25rem;
+  position: relative;
+  z-index: 5;
+}
+
+@media (max-width: 47.99em) {
+  .logos-section {
+    height: auto;
+    min-height: 100dvh;
+    overflow-y: auto;
+  }
+
+  .logo-cell {
+    min-height: 14rem;
+  }
+
+  .logo-cell__canvas {
+    min-height: 14rem;
+  }
+}

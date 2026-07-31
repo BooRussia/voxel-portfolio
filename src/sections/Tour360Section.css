@@ -1,0 +1,87 @@
+.tour-section {
+  background: #000;
+  touch-action: none;
+}
+
+.tour-section__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+
+.tour-section__canvas:active {
+  cursor: grabbing;
+}
+
+.tour-section__veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, transparent 28%, transparent 72%, rgba(0, 0, 0, 0.5) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.2) 100%);
+  z-index: 2;
+}
+
+.tour-section__header {
+  position: absolute;
+  top: calc(var(--nav-safe) + 3.5rem);
+  left: var(--pad);
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
+}
+
+.tour-section__header .section-title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: #fff;
+}
+
+.tour-section__body {
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
+  max-width: 32ch;
+}
+
+.tour-section__hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  transition: opacity 500ms var(--ease);
+  padding: 0.75rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.tour-section__hint.is-hidden {
+  opacity: 0;
+}
+
+/* Safe dock — bottom right, outside primary look-around zone */
+.tour-section__cta-dock {
+  position: absolute;
+  right: max(var(--pad), env(safe-area-inset-right));
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  z-index: 10;
+  /* Extra hit padding so drag starting near edge still works on canvas,
+     but button itself is easy to aim for deliberately */
+  padding: 0.25rem;
+}

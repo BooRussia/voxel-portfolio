@@ -1,0 +1,75 @@
+.gaussian-section {
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--nav-safe) + 3.25rem) var(--pad) 1.25rem;
+  background: #04040a;
+}
+
+.gaussian-section__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  filter: saturate(1.2) contrast(1.05);
+  pointer-events: none;
+}
+
+.gaussian-section__veil {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 55%,
+    transparent 0%,
+    rgba(4, 4, 10, 0.75) 70%
+  );
+  pointer-events: none;
+}
+
+.gaussian-section__header {
+  position: relative;
+  z-index: 3;
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.gaussian-section__header .section-title {
+  font-size: clamp(2.25rem, 7vw, 4.5rem);
+  color: #fff;
+  max-width: 12ch;
+}
+
+.gaussian-section__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  touch-action: none;
+  cursor: grab;
+}
+
+.gaussian-section__canvas:active {
+  cursor: grabbing;
+}
+
+.gaussian-section__footer {
+  position: relative;
+  z-index: 5;
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.gaussian-section__hint {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.4);
+}

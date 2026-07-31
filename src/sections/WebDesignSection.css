@@ -1,0 +1,253 @@
+.web-section {
+  background: #070707;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--nav-safe) + 3.5rem) var(--pad) 1.5rem;
+}
+
+.web-section__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 55%, rgba(201, 162, 39, 0.07), transparent 60%),
+    #070707;
+  pointer-events: none;
+}
+
+.web-section__header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.web-section__heading {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: rgba(255, 255, 255, 0.12);
+  line-height: 1;
+}
+
+.web-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  align-self: center;
+}
+
+/* Giant style name */
+.web-stage__title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 14vw, 10rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  will-change: transform, opacity;
+  text-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+  mix-blend-mode: screen;
+}
+
+/* Fake browser / screen recording */
+.web-browser {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: min(78vw, 52rem);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 30px 80px rgba(0, 0, 0, 0.65),
+    0 0 60px rgba(201, 162, 39, 0.08);
+  will-change: transform, opacity;
+}
+
+.web-browser__chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 2.25rem;
+  padding: 0 0.85rem;
+  background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.web-browser__dots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.web-browser__dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #3a3a3a;
+}
+
+.web-browser__dots i:nth-child(1) {
+  background: #ff5f57;
+}
+.web-browser__dots i:nth-child(2) {
+  background: #febc2e;
+}
+.web-browser__dots i:nth-child(3) {
+  background: #28c840;
+}
+
+.web-browser__url {
+  flex: 1;
+  min-width: 0;
+  height: 1.35rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.65rem;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.35);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.web-browser__viewport {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.web-browser__shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 180ms linear;
+  transform: scale(1.02);
+}
+
+.web-browser__shot.is-active {
+  opacity: 1;
+  animation: ken 4.2s ease-in-out infinite alternate;
+}
+
+@keyframes ken {
+  from {
+    transform: scale(1.02) translateY(0);
+  }
+  to {
+    transform: scale(1.08) translateY(-1.5%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .web-browser__shot.is-active {
+    animation: none;
+  }
+}
+
+.web-browser__scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  animation: scan 3.5s linear infinite;
+  mix-blend-mode: overlay;
+}
+
+@keyframes scan {
+  from {
+    background-position: 0 -100%;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+
+.web-section__footer {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.web-section__hint {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  max-width: 28ch;
+}
+
+.web-section__pips {
+  display: flex;
+  gap: 0.4rem;
+  order: 3;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 48em) {
+  .web-section__pips {
+    order: 0;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.web-section__pip {
+  width: 1.5rem;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background 200ms, width 200ms;
+}
+
+.web-section__pip.is-active {
+  width: 2.25rem;
+}
+
+/* CTA sits bottom-right — clear of the animated stage center */
+.web-section__more {
+  margin-left: auto;
+}
+
+@media (max-width: 40em) {
+  .web-browser {
+    width: min(92vw, 52rem);
+  }
+
+  .web-stage__title {
+    font-size: clamp(2.5rem, 16vw, 5rem);
+  }
+
+  .web-section__hint {
+    display: none;
+  }
+}

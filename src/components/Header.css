@@ -1,0 +1,194 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  transition:
+    background var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+  border-bottom: 1px solid transparent;
+  background: transparent;
+}
+
+.site-header.is-scrolled,
+.site-header.is-open {
+  background: hsl(40 6% 4% / 0.82);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border-bottom-color: var(--color-border);
+  box-shadow: var(--shadow-1);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: min(100% - var(--gutter) * 2, var(--content-max));
+  height: 100%;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--tap-min);
+  flex-shrink: 0;
+}
+
+.site-logo__mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: var(--shadow-glow);
+}
+
+.site-logo__word {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.site-logo__word em {
+  font-style: normal;
+  font-weight: var(--weight-regular);
+  color: var(--color-text-tertiary);
+}
+
+.site-nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding: 0 var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.site-nav__link:hover {
+  color: var(--color-text);
+}
+
+.site-nav__link.is-active {
+  color: var(--color-accent);
+}
+
+.site-nav__cta {
+  padding-inline: 1.1rem;
+}
+
+.menu-toggle {
+  display: grid;
+  place-items: center;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  margin-inline-end: calc(var(--space-2) * -1);
+  border-radius: var(--radius-md);
+}
+
+.menu-toggle__bars {
+  display: grid;
+  gap: 6px;
+  width: 20px;
+}
+
+.menu-toggle__bars i {
+  display: block;
+  height: 1.5px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-fast);
+  transform-origin: center;
+}
+
+.site-header.is-open .menu-toggle__bars i:first-child {
+  transform: translateY(3.75px) rotate(45deg);
+}
+
+.site-header.is-open .menu-toggle__bars i:last-child {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+.mobile-nav {
+  position: fixed;
+  inset: var(--nav-h) 0 0;
+  background: hsl(40 6% 4% / 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: var(--space-8) var(--gutter) var(--space-12);
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    visibility var(--dur-base);
+}
+
+.mobile-nav.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav[hidden] {
+  display: block; /* override default hidden when we control via class */
+}
+
+.mobile-nav:not(.is-open)[hidden] {
+  display: none;
+}
+
+.mobile-nav ul {
+  display: grid;
+  gap: var(--space-1);
+  margin-bottom: var(--space-8);
+}
+
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  min-height: 3.25rem;
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-nav__link.active,
+.mobile-nav__link[aria-current='page'] {
+  color: var(--color-accent);
+}
+
+@media (min-width: 48em) {
+  .site-nav {
+    display: flex;
+  }
+
+  .menu-toggle,
+  .mobile-nav {
+    display: none !important;
+  }
+
+  .site-logo__word {
+    font-size: var(--text-sm);
+  }
+}

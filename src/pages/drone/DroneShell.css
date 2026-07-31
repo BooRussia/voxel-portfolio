@@ -1,0 +1,358 @@
+/* SpaceX / Grok-adjacent multipage shell — pure black, massive type, hairline chrome */
+
+.drone-app {
+  --dx-bg: #000;
+  --dx-elevated: #0a0a0a;
+  --dx-surface: #111;
+  --dx-line: rgba(255, 255, 255, 0.12);
+  --dx-line-strong: rgba(255, 255, 255, 0.22);
+  --dx-text: #f5f5f5;
+  --dx-dim: #8a8a8a;
+  --dx-faint: #555;
+  --dx-white: #fff;
+  --dx-pad: clamp(1.25rem, 4vw, 3.5rem);
+  --dx-max: 72rem;
+  --dx-narrow: 42rem;
+  --dx-top: 3.75rem;
+
+  min-height: 100dvh;
+  background: var(--dx-bg);
+  color: var(--dx-text);
+  font-family: var(--font-body);
+  /* Override scroll-snap portfolio mode */
+  overflow-x: hidden;
+}
+
+/* When drone routes mount, kill page-level snap on html */
+html:has(.drone-app) {
+  scroll-snap-type: none;
+  scroll-behavior: smooth;
+}
+
+html:has(.drone-app) body {
+  overflow-x: hidden;
+}
+
+.drone-skip {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  padding: 0.65rem 1rem;
+  background: var(--dx-white);
+  color: #000;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.drone-skip:focus {
+  top: 1rem;
+}
+
+.drone-top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.drone-top__inner {
+  max-width: var(--dx-max);
+  margin: 0 auto;
+  min-height: var(--dx-top);
+  padding: 0.75rem var(--dx-pad);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.drone-top__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.16em;
+  color: var(--dx-white);
+}
+
+.drone-top__brand img {
+  border-radius: 4px;
+}
+
+.drone-top__nav {
+  display: none;
+  flex: 1;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+@media (min-width: 52em) {
+  .drone-top__nav {
+    display: flex;
+  }
+}
+
+.drone-top__link {
+  min-height: 2.25rem;
+  padding: 0.4rem 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dx-dim);
+  border-radius: 2px;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.drone-top__link:hover {
+  color: var(--dx-white);
+}
+
+.drone-top__link.is-active {
+  color: var(--dx-white);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.drone-top__cta {
+  margin-left: auto;
+  min-height: 2.25rem;
+  padding: 0.45rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #000;
+  background: var(--dx-white);
+  border: 1px solid var(--dx-white);
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.drone-top__cta:hover {
+  background: transparent;
+  color: var(--dx-white);
+}
+
+.drone-top__rule {
+  height: 1px;
+  background: var(--dx-line);
+}
+
+.drone-top__mobile {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.45rem var(--dx-pad) 0.65rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--dx-line);
+}
+
+.drone-top__mobile::-webkit-scrollbar {
+  display: none;
+}
+
+.drone-top__mobile a {
+  flex: 0 0 auto;
+  min-height: 2rem;
+  padding: 0.35rem 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dx-dim);
+  border: 1px solid transparent;
+  border-radius: 999px;
+}
+
+.drone-top__mobile a.is-active {
+  color: var(--dx-white);
+  border-color: var(--dx-line-strong);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+@media (min-width: 52em) {
+  .drone-top__mobile {
+    display: none;
+  }
+}
+
+.drone-main {
+  min-height: calc(100dvh - var(--dx-top) - 8rem);
+}
+
+.drone-foot {
+  border-top: 1px solid var(--dx-line);
+  margin-top: clamp(3rem, 8vw, 6rem);
+  padding: clamp(2rem, 5vw, 3.5rem) var(--dx-pad);
+}
+
+.drone-foot__inner {
+  max-width: var(--dx-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+@media (min-width: 48em) {
+  .drone-foot__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.drone-foot__mark {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  color: var(--dx-white);
+}
+
+.drone-foot__brand p {
+  margin-top: 0.5rem;
+  max-width: 28ch;
+  font-size: 0.9rem;
+  color: var(--dx-dim);
+  line-height: 1.5;
+}
+
+.drone-foot__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.drone-foot__links a {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dx-dim);
+  transition: color 160ms ease;
+}
+
+.drone-foot__links a:hover {
+  color: var(--dx-white);
+}
+
+/* Shared primitives for hub + detail */
+.dx-shell {
+  max-width: var(--dx-max);
+  margin: 0 auto;
+  padding-inline: var(--dx-pad);
+}
+
+.dx-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--dx-dim);
+}
+
+.dx-display {
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 12vw, 7.5rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 0.88;
+  color: var(--dx-white);
+}
+
+.dx-display-md {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--dx-white);
+}
+
+.dx-lede {
+  max-width: 48ch;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--dx-dim);
+}
+
+.dx-rule {
+  border: 0;
+  height: 1px;
+  background: var(--dx-line);
+  margin: 0;
+}
+
+.dx-btn {
+  min-height: 2.75rem;
+  padding: 0.7rem 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--dx-white);
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.dx-btn--solid {
+  background: var(--dx-white);
+  color: #000;
+}
+
+.dx-btn--solid:hover {
+  background: transparent;
+  color: var(--dx-white);
+}
+
+.dx-btn--ghost {
+  background: transparent;
+  color: var(--dx-white);
+}
+
+.dx-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dx-section {
+  padding-block: clamp(3rem, 8vw, 5.5rem);
+}
+
+.dx-section__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+  max-width: 40rem;
+}
+
+.dx-section__head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.dx-section__head p {
+  color: var(--dx-dim);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  max-width: 48ch;
+}
