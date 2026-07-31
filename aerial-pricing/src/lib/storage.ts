@@ -8,7 +8,7 @@ import {
 } from '../data/pricingServices'
 import type { LatLng } from './geo'
 
-const KEY = 'voxel-drone-pricing-v1'
+const KEY = 'aerial-pricing-v1'
 
 export interface PersistedPricingState {
   services: PricingService[]

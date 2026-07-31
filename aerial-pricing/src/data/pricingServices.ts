@@ -203,7 +203,7 @@ export const DEFAULT_GLOBAL: GlobalPricingSettings = {
   },
   taxRatePercent: 0,
   currency: 'USD',
-  companyName: 'Voxel Aerial',
+  companyName: 'Aerial Pricing',
   quoteValidityDays: 30,
 }
 

@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap');
 
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .pq-app {
   color-scheme: light;
   --pq-bg: #eef2f4;
@@ -116,9 +125,9 @@
   height: 2.75rem;
   padding: 0 0.85rem;
   border-radius: 999px;
-  background: hsl(0 0% 100% / 0.94);
-  border: 1px solid hsl(200 20% 20% / 0.1);
-  box-shadow: var(--pq-shadow);
+  background: #ffffff;
+  border: 1px solid hsl(200 20% 20% / 0.16);
+  box-shadow: 0 8px 28px hsl(200 30% 10% / 0.35);
 }
 
 .pq-search__field input {

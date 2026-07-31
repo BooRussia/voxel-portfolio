@@ -1,0 +1,52 @@
+name: Deploy Aerial Pricing to GitHub Pages
+
+# Use this workflow when THIS folder is the root of its own GitHub repository.
+# (Copy aerial-pricing/ contents to a new repo, then enable Pages → GitHub Actions.)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: aerial-pricing-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build
+        # For https://USER.github.io/REPO/ set the repo name below.
+        # For a custom domain or user site, leave VITE_BASE_PATH empty / "/".
+        run: |
+          if [ -n "${{ vars.VITE_BASE_PATH }}" ]; then
+            VITE_BASE_PATH="${{ vars.VITE_BASE_PATH }}" npm run build
+          else
+            npm run build
+          fi
+          cp dist/index.html dist/404.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
